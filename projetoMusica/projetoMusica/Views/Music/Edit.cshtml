@@ -1,0 +1,98 @@
+﻿@model projetoMusica.Models.Music
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    body {
+        background-color: #282424;
+        color: white;
+    }
+
+    .btn-dark, btn, .btn-dark:active .btn-dark:visited {
+        background-color: #282424;
+        color: #ECDEDE;
+        border-color: white;
+    }
+
+        .btn-dark:hover {
+            background-color: #ECDEDE;
+            color: black;
+            border-color: white;
+        }
+
+    .form-control {
+        background-color: #282424;
+        border-color: #3e3a3a;
+    }
+
+        .form-control:hover, .form-control:focus {
+            border-color: #282424;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            background-color: #201d1d;
+        }
+
+    .form-check-input, .form-check-input:checked {
+        background-color: #282424;
+        border-color: #3e3a3a;
+    }
+
+        .form-check-input:hover, .form-check-input:focus {
+            border-color: #282424;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            background-color: #201d1d;
+        }
+
+
+</style>
+
+<h1>Edit</h1>
+
+<h4><span asp-validation-for="musicName" class="text-danger"></span></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
+            <div class="form-group mb-2">
+                <label asp-for="musicName" class="control-label"></label>
+                <input asp-for="musicName" class="form-control text-white" />
+                <span asp-validation-for="musicName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Artist" class="control-label"></label>
+                <input asp-for="Artist" class="form-control text-white" />
+                <span asp-validation-for="Artist" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Genre" class="control-label"></label>
+                <input asp-for="Genre" class="form-control text-white" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check mb-2">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Explicit" /> @Html.DisplayNameFor(model => model.Explicit)
+                </label>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="releaseDate" class="control-label"></label>
+                <input asp-for="releaseDate" class="form-control text-white" />
+                <span asp-validation-for="releaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <input type="submit" value="Save" class="btn btn-dark btn-sm" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-dark btn-sm">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,141 @@
+﻿@model projetoMusica.Models.Artist
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    body {
+        background-color: #282424;
+        color: white;
+    }
+
+    .btn-dark, btn, .btn-dark:active .btn-dark:visited {
+        background-color: #282424;
+        color: #ECDEDE;
+        border-color: white;
+    }
+
+        .btn-dark:hover {
+            background-color: #ECDEDE;
+            color: black;
+            border-color: white;
+        }
+
+    .form-control {
+        background-color: #282424;
+        border-color: #3e3a3a;
+    }
+
+        .form-control:hover, .form-control:focus {
+            border-color: #282424;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            background-color: #201d1d;
+        }
+
+    .form-check-input, .form-check-input:checked {
+        background-color: #282424;
+        border-color: #3e3a3a;
+    }
+
+        .form-check-input:hover, .form-check-input:focus {
+            border-color: #282424;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            background-color: #201d1d;
+        }
+
+</style>
+
+<h1>Edit an Artist</h1>
+
+<h4>Artist</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <style>
+    body {
+        background-color: #282424;
+        color: white;
+    }
+
+    .btn-dark, btn, .btn-dark:active .btn-dark:visited {
+        background-color: #282424;
+        color: #ECDEDE;
+        border-color: white;
+    }
+
+        .btn-dark:hover {
+            background-color: #ECDEDE;
+            color: black;
+            border-color: white;
+        }
+
+    .form-control {
+        background-color: #282424;
+        border-color: #3e3a3a;
+    }
+
+        .form-control:hover, .form-control:focus {
+            border-color: #282424;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            background-color: #201d1d;
+        }
+
+    .form-check-input, .form-check-input:checked {
+        background-color: #282424;
+        border-color: #3e3a3a;
+    }
+
+        .form-check-input:hover, .form-check-input:focus {
+            border-color: #282424;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            background-color: #201d1d;
+        }
+
+
+</style>
+            <div class="form-group mb-2">
+                Name
+                <input asp-for="artistName" class="form-control text-white" />
+                <span asp-validation-for="artistName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                Main Instrument
+                <input asp-for="mainInstrument" class="form-control text-white" />
+                <span asp-validation-for="mainInstrument" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                Main Genre
+                <input asp-for="mainGenre" class="form-control text-white" />
+                <span asp-validation-for="mainGenre" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                Birth Date
+                <input asp-for="born" class="form-control text-white" />
+                <span asp-validation-for="born" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                Group (leave blank if its a solo artist)
+                <input asp-for="group" class="form-control text-white" />
+                <span asp-validation-for="group" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-dark btn-sm" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-dark btn-sm mt-1">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

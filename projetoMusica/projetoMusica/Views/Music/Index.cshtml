@@ -1,0 +1,122 @@
+﻿@model IEnumerable<projetoMusica.Models.Music>
+
+    @{
+        ViewData["Title"] = "Yfitops";
+    }
+
+<style>
+    body {
+        background-color: #282424;
+        color: white;
+    }
+
+    .btn-dark, btn, .btn-dark:active .btn-dark:visited {
+        background-color: #ECDEDE;
+        color: black;
+        border-color: white;
+    }
+
+    .btn-dark:hover {
+        background-color: #282424;
+        color: #ECDEDE;
+        border-color: white;
+        
+    }
+
+    .multicolor:hover{animation: changebg 10s linear infinite;}
+    
+    
+
+    @@keyframes changebg {
+        0% {
+            background-color: red;
+        }
+
+        20% {
+            background-color: blue;
+        }
+
+        40% {
+            background-color: yellow;
+        }
+
+        60% {
+            background-color: purple;
+        }
+
+        80% {
+            background-color: green;
+        }
+
+        100% {
+           background-color: red;
+        }
+    }  
+
+</style>
+
+
+<h1>Yfitops</h1>
+
+<p>
+    <a class="btn btn-dark btn-sm multicolor" asp-action="Create">New Music</a>
+</p>
+<div class="table-responsive">
+<table class="table text-white align-middle">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.musicName)*@
+                Music
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Artist) *@
+                Artist
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Genre)*@
+                Genre
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.releaseDate)*@
+                Release Date
+            </th>      
+            <th>
+            @*@Html.DisplayNameFor(model => model.Explicit)*@
+            Explicit
+            </th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var music in Model)
+        {
+            <tr>
+                <td>
+                    @music.musicName
+                </td>
+                <td>
+                    @music.Artist
+                </td>
+                <td>
+                    @music.Genre
+                </td>
+                <td>
+                    @music.releaseDate
+                </td>
+                <td>
+                    @if(@music.Explicit == true) {
+                        <span class="badge bg-danger text-white">Explicit</span>
+                    } else {
+                <span class="badge bg-success text-white">Clear</span>
+                    }                         
+                </td>
+                <td>
+                    <a class="btn btn-dark btn-sm " asp-action="Edit" asp-route-id="@music.Id">Edit</a>
+                    <a class="btn btn-dark btn-sm" asp-action="Details" asp-route-id="@music.Id">Details</a>
+                    <a class="btn btn-dark btn-sm" asp-action="Delete" asp-route-id="@music.Id">Delete</a> 
+                </td>
+            </tr>
+        }
+    </tbody>       
+</table>
+</div>

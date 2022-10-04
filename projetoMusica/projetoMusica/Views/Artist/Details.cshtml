@@ -1,0 +1,79 @@
+﻿@model projetoMusica.Models.Artist
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    body {
+        background-color: #282424;
+        color: white;
+    }
+
+    .btn-dark, btn, .btn-dark:active .btn-dark:visited {
+        background-color: #ECDEDE;
+        color: black;
+        border-color: white;
+    }
+
+        .btn-dark:hover {
+            background-color: #282424;
+            color: #ECDEDE;
+            border-color: white;
+        }
+</style>
+
+<h1>@Html.DisplayFor(model => model.artistName)</h1>
+
+<div>
+    <h4>Artist Details</h4>
+    <hr />
+    <dl class="row">        
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.artistName)*@
+            Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.artistName)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.mainInstrument)*@
+            Main Instrument
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mainInstrument)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.mainGenre)*@
+            Main Genre
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mainGenre)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.born)*@
+            Birth Date
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.born)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.group)*@
+            Group
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.group == null)
+            {
+                <div text-white>Solo</div>
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.group)
+            }           
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-dark btn-sm" asp-action="Edit" asp-route-id="@Model?.Id">Edit this artist</a>
+    <a class="btn btn-dark btn-sm" asp-action="Index">List</a>
+</div>

@@ -1,0 +1,69 @@
+﻿@model projetoMusica.Models.Music
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    body {
+        background-color: #282424;
+        color: white;
+    }
+
+    .btn-dark, btn, .btn-dark:active .btn-dark:visited {
+        background-color: #ECDEDE;
+        color: black;
+        border-color: white;
+    }
+
+        .btn-dark:hover {
+            background-color: #282424;
+            color: #ECDEDE;
+            border-color: white;
+        }
+</style>
+
+
+<h1>@Html.DisplayFor(model => model.musicName)</h1>
+
+<div>
+    <h4>Music Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Artist)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Artist)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Explicit)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Explicit == true)
+            {
+                <span class="badge bg-danger text-white">Explicit</span>
+            }
+            else
+            {
+                <span class="badge bg-success text-white">Clear</span>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            Release Date
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.releaseDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-dark btn-sm" asp-action="Edit" asp-route-id="@Model?.Id">Edit this music</a> 
+    <a class="btn btn-dark btn-sm" asp-action="Index">List</a>
+</div>

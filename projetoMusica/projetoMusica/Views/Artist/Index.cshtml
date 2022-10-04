@@ -1,0 +1,93 @@
+﻿@model IEnumerable<projetoMusica.Models.Artist>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        background-color: #282424;
+        color: white;
+    }
+
+    .btn-dark, btn, .btn-dark:active .btn-dark:visited {
+        background-color: #ECDEDE;
+        color: black;
+        border-color: white;
+    }
+
+        .btn-dark:hover {
+            background-color: #282424;
+            color: #ECDEDE;
+            border-color: white;
+        }
+
+</style>
+
+<h1>Artists List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-dark btn-sm">New Artist</a>
+</p>
+<div class="table-responsive">
+<table class="table text-white align-middle">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.artistName)*@
+                Artist
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.mainInstrument)*@
+                Main Instrument
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.mainGenre)*@
+                Main Genre
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.born)*@
+                Birth Date
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.group)*@
+                Group
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var artist in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelartist => artist.artistName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelartist => artist.mainInstrument)
+            </td>
+            <td>
+                @Html.DisplayFor(modelartist => artist.mainGenre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelartist => artist.born)
+            </td>
+            <td>                
+                    @if (@artist.group == null)
+                    {
+                        <div text-white>Solo</div>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelartist => artist.group)
+                    }
+            </td>
+            <td>
+                    <a class="btn btn-dark btn-sm" asp-action="Edit" asp-route-id="@artist.Id">Edit</a>
+                    <a class="btn btn-dark btn-sm" asp-action="Details" asp-route-id="@artist.Id">Details</a>
+                    <a class="btn btn-dark btn-sm" asp-action="Delete" asp-route-id="@artist.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
